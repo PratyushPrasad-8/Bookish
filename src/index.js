@@ -4,10 +4,13 @@ import authRoutes from "./routes/authRoutes.js";
 import bookRoutes from "./routes/bookRotes.js";
 import { connectDB } from "./lib/db.js";
 import cors from "cors";
+import cronJob from "./lib/cron.js";
+
 const app = express();
 const PORT= process.env.PORT || 5000;
 
 //Creating middleware
+cronJob.start();
 app.use(express.json());//Mandatory to use req.body
 app.use(cors());
 app.use("/api/auth", authRoutes);

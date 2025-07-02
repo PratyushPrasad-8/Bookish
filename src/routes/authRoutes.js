@@ -35,12 +35,6 @@ router.post("/register", serverSideRegisterValidations, async (req, res) => {
     //Sending response
     res.status(201).json({
       token,
-      user: {
-        id: newUser._id,
-        username: newUser.username,
-        email: newUser.email,
-        profileImage: newUser.profileImage,
-      },
       message: "User registered successfully",
     });
   } catch (error) {
@@ -78,12 +72,6 @@ router.post("/login", serverSideLoginValidations, async (req, res) => {
     //Sending response
     res.status(200).json({
       token,
-      user: {
-        id: user._id,
-        username: user.username,
-        email: user.email,
-        profileImage: user.profileImage,
-      },
       message: "User logged in successfully",
     });
   } catch (error) {
