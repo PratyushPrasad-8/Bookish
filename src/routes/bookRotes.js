@@ -34,7 +34,7 @@ router.get("/user", protect, async(req, res)=>{
         const books = await Book.find({user: req.user._id}).sort({createdAt: -1});
         
         //sending response
-        res.status(200).json(books);
+        res.status(200).json({books, user: req.user});
     }catch(error){
         console.log("Error while fetching user books",error);
         res.status(500).json({message: "Error while fetching user books"});
