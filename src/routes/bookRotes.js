@@ -80,7 +80,7 @@ router.delete("/:id", protect, async(req, res) => {
         //format of cloudinary URL -> https://res.cloudinary.com/<cloud_name>/image/upload/v<version>/<public_id>.<format>
         try{
             const publicId = book.image.split("/").pop().split(".")[0];
-            const result = await cloudinary.uploader.destroy(book.image);
+            const result = await cloudinary.uploader.destroy(publicId);
             if(result.result !== "ok"){
                 return res.status(500).json({message: "Error while deleting service"});
             }
